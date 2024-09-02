@@ -1,0 +1,8 @@
+<h2>Angular Control Flow</h2>
+
+    <!-- Before Control Flow -->
+    <!-- <div *ngIf="products.length; else noProducts">Show product list</div>
+    <ng-template #noProducts> Products are empty! </ng-template> -->
+
+    <!-- After Control Flow -->
+    @if (products.length) { Show product list } @else { Products are empty! }
