@@ -93,22 +93,22 @@
 
     <p-dropdown
       [options]="cities"
-      formControlName="selectedCity"
+      formControlName="selectedCityTemplate"
       optionLabel="name"
       name="cityWithTemplate"
-      [showClear]="contactForm.value.selectedCity !== ''"
+      [showClear]="contactForm.value.selectedCityTemplate?.name !== ''"
       placeholder="Select a City"
       aria-labelledby="dd4"
     >
       <ng-template pTemplate="selectedItem">
-        <div *ngIf="contactForm.value.selectedCity !== ''">
+        <div *ngIf="contactForm.value.selectedCityTemplate?.name !== ''">
           <span class="pi pi-map-marker"></span>
-          <span>{{ contactForm.value.selectedCity }}</span>
+          <span>{{ contactForm.value.selectedCityTemplate?.name }}</span>
         </div>
       </ng-template>
       <ng-template let-city pTemplate="item">
         <div>
-          <span [ngClass]="contactForm.value.selectedCity !== '' ? 'pi pi-map-marker' : ''"></span>
+          <span [ngClass]="contactForm.value.selectedCityTemplate?.name !== '' ? 'pi pi-map-marker' : ''"></span>
           <span>{{ city.name }}</span>
         </div>
       </ng-template>

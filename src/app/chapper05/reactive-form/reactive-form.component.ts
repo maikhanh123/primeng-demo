@@ -52,7 +52,8 @@ export class ReactiveFormComponent {
     gender: [''],
     selectedCity: [''],
     selectedCitygroup: [''],
-    selectedCities:['']
+    selectedCities:[''],
+    selectedCityTemplate: [{ name: '', code: '' },]
   });
 
   genders: { name: string; value: string }[] = [
