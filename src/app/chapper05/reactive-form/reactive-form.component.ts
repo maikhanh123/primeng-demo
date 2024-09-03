@@ -15,6 +15,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { SelectItemGroup } from 'primeng/api';
+import { CalendarModule } from 'primeng/calendar'
 
 interface City {
   name: string;
@@ -34,6 +35,7 @@ interface City {
     RadioButtonModule,
     DropdownModule,
     MultiSelectModule,
+    CalendarModule,
   ],
   templateUrl: './reactive-form.component.html',
   styleUrl: './reactive-form.component.scss',
@@ -52,7 +54,11 @@ export class ReactiveFormComponent {
     gender: [''],
     selectedCity: [''],
     selectedCitygroup: [''],
-    selectedCities:['']
+    selectedCities:[''],
+    calendar: [''],
+    calendarWithFormat: [''],
+    calendarDateRange: [''],
+    calendarLiteralText: ['']
   });
 
   genders: { name: string; value: string }[] = [

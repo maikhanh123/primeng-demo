@@ -33,6 +33,8 @@ import { ReactiveFormComponent } from "./chapper05/reactive-form/reactive-form.c
 export class AppComponent {
   title = 'primeng-demo';
   chapter05 = true;
+  isTemplateDrivenForm = false;
   chapter04 = false;
   chapter03 = false;
+
 }

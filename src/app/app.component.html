@@ -205,9 +205,11 @@
       </svg>
       <h1>Hello, {{ title }}</h1>
       <p>Congratulations! Your app is running. 🎉</p>
-      <div  *ngIf="chapter05">
+      <div *ngIf="chapter05">
         <app-reactive-form />
-        <app-template-driven-form />
+        <div *ngIf="isTemplateDrivenForm">
+          <app-template-driven-form />
+        </div>
       </div>
       <div *ngIf="chapter04">
         <app-button-configuration />

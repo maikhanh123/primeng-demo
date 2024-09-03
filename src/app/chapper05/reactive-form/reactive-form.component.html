@@ -33,39 +33,21 @@
 
   <div class="form-group">
     <span id="dd1">Default Dropdown</span>
-    <p-dropdown
-      [options]="cities"
-      formControlName="selectedCity"
-      [showClear]="contactForm.value.selectedCity !== ''"
-      optionLabel="name"
-      name="city"
-      aria-labelledby="dd1"
-    />
+    <p-dropdown [options]="cities" formControlName="selectedCity" [showClear]="contactForm.value.selectedCity !== ''"
+      optionLabel="name" name="city" aria-labelledby="dd1" />
   </div>
 
   <div class="form-group">
     <span id="dd2">Dropdown With Filter</span>
-    <p-dropdown
-      [options]="cities"
-      formControlName="selectedCity"
-      optionLabel="name"
-      name="cityWithFilter"
-      [filter]="true"
-      aria-labelledby="dd2"
-    />
+    <p-dropdown [options]="cities" formControlName="selectedCity" optionLabel="name" name="cityWithFilter"
+      [filter]="true" aria-labelledby="dd2" />
   </div>
 
   <div class="form-group">
     <span id="dd3">Grouping</span>
 
-    <p-dropdown
-      [options]="groupedCities"
-      formControlName="selectedCitygroup"
-      name="cityWithGroup"
-      placeholder="Select a City"
-      aria-labelledby="dd3"
-      [group]="true"
-    >
+    <p-dropdown [options]="groupedCities" formControlName="selectedCitygroup" name="cityWithGroup"
+      placeholder="Select a City" aria-labelledby="dd3" [group]="true">
       <ng-template let-group pTemplate="group">
         <div>
           <span class="pi pi-map-marker"></span>
@@ -78,28 +60,15 @@
   <div class="form-group">
     <span id="dd5">Events</span>
 
-    <p-dropdown
-      [options]="cities"
-      formControlName="selectedCity"
-      optionLabel="name"
-      (onChange)="onCityChange($event.value)"
-      name="cityWithEvents"
-      aria-labelledby="dd5"
-    />
+    <p-dropdown [options]="cities" formControlName="selectedCity" optionLabel="name"
+      (onChange)="onCityChange($event.value)" name="cityWithEvents" aria-labelledby="dd5" />
   </div>
 
   <div class="form-group">
     <span id="dd4">Templating</span>
 
-    <p-dropdown
-      [options]="cities"
-      formControlName="selectedCity"
-      optionLabel="name"
-      name="cityWithTemplate"
-      [showClear]="contactForm.value.selectedCity !== ''"
-      placeholder="Select a City"
-      aria-labelledby="dd4"
-    >
+    <p-dropdown [options]="cities" formControlName="selectedCity" optionLabel="name" name="cityWithTemplate"
+      [showClear]="contactForm.value.selectedCity !== ''" placeholder="Select a City" aria-labelledby="dd4">
       <ng-template pTemplate="selectedItem">
         <div *ngIf="contactForm.value.selectedCity !== ''">
           <span class="pi pi-map-marker"></span>
@@ -115,27 +84,16 @@
     </p-dropdown>
   </div>
 
-   <div class="form-group">
+  <div class="form-group">
     <span id="dm1">Default MultiSelect</span>
-    <p-multiSelect
-      [options]="cities"
-      formControlName="selectedCities"
-      optionLabel="name"
-      name="city"
-      aria-labelledby="dm1"
-    />
+    <p-multiSelect [options]="cities" formControlName="selectedCities" optionLabel="name" name="city"
+      aria-labelledby="dm1" />
   </div>
 
   <div class="form-group">
     <span id="dd2">MultiSelect Grouping</span>
-    <p-multiSelect
-      [options]="groupedCities"
-      [group]="true"
-      formControlName="selectedCities"
-      name="cityWithGroup"
-      placeholder ="Select a City"
-      aria-labelledby="dd2"
-    >
+    <p-multiSelect [options]="groupedCities" [group]="true" formControlName="selectedCities" name="cityWithGroup"
+      placeholder="Select a City" aria-labelledby="dd2">
       <ng-template let-group pTemplate="group">
         <div>
           <span class="pi pi-map-marker"></span>
@@ -147,14 +105,8 @@
 
   <div class="form-group">
     <span id="dd3">MultiSelect Templating</span>
-    <p-multiSelect
-      [options]="cities"
-      formControlName="selectedCities"
-      placeholder="Select a Country"
-      name="cityWithTemplating"
-      optionLabel="name"
-      aria-labelledby="dd3"
-    >
+    <p-multiSelect [options]="cities" formControlName="selectedCities" placeholder="Select a Country"
+      name="cityWithTemplating" optionLabel="name" aria-labelledby="dd3">
       <ng-template let-cities pTemplate="selectedItems">
         <div *ngFor="let city of cities">
           <span class="pi pi-map-marker"></span>
@@ -170,6 +122,39 @@
         </div>
       </ng-template>
     </p-multiSelect>
+  </div>
+
+  <!-- Calendar -->
+  <div class="form-group">
+    <span>Default Calendar</span>
+    <p-calendar formControlName="calendar" />
+  </div>
+
+  <div class="form-group">
+    <span>Calendar with Format</span>
+    <p-calendar formControlName="calendarWithFormat" dateFormat="yy/mm/dd" />
+  </div>
+
+  <div class="form-group">
+    <span>Calendar With Date Range</span>
+    <p-calendar formControlName="calendarDateRange" selectionMode="range" [readonlyInput]="true" />
+  </div>
+
+  <div class="form-group">
+    <span>Calendar With Literal Text</span>
+    <p-calendar [style]="{'width': '500px'}" formControlName="calendarLiteralText" selectionMode="range"
+      [readonlyInput]="true" dateFormat="'Day: 'dd 'Month: 'MM 'Year: 'yy" />
+  </div>
+
+  <div class="form-group">
+    <span>Calendar With Single Quote</span>
+    <p-calendar [style]="{'width': '500px'}" name="calendarSingleQuote" selectionMode="range"
+      dateFormat="'Today''s date is 'dd/MM/yy" />
+  </div>
+
+  <div class="form-group">
+    <span>Calendar other format</span>
+    <p-calendar [style]="{'width': '500px'}" name="calendarOtherFormat" selectionMode="range" dateFormat="dd+MM+yy" />
   </div>
 
 
