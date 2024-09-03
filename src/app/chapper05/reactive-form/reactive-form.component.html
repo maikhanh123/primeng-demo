@@ -35,8 +35,8 @@
     <span id="dd1">Default Dropdown</span>
     <p-dropdown
       [options]="cities"
-      formControlName="cities"
-      [showClear]="contactForm.value.cities?.name !== ''"
+      formControlName="selectedCity"
+      [showClear]="contactForm.value.selectedCity !== ''"
       optionLabel="name"
       name="city"
       aria-labelledby="dd1"
@@ -47,7 +47,7 @@
     <span id="dd2">Dropdown With Filter</span>
     <p-dropdown
       [options]="cities"
-      formControlName="cities"
+      formControlName="selectedCity"
       optionLabel="name"
       name="cityWithFilter"
       [filter]="true"
@@ -60,7 +60,7 @@
 
     <p-dropdown
       [options]="groupedCities"
-      formControlName="groupedCities"
+      formControlName="selectedCitygroup"
       name="cityWithGroup"
       placeholder="Select a City"
       aria-labelledby="dd3"
@@ -80,7 +80,7 @@
 
     <p-dropdown
       [options]="cities"
-      formControlName="cities"
+      formControlName="selectedCity"
       optionLabel="name"
       (onChange)="onCityChange($event.value)"
       name="cityWithEvents"
@@ -93,26 +93,83 @@
 
     <p-dropdown
       [options]="cities"
-      formControlName="cities"
+      formControlName="selectedCity"
       optionLabel="name"
       name="cityWithTemplate"
-      [showClear]="contactForm.value.cities?.name !== ''"
+      [showClear]="contactForm.value.selectedCity !== ''"
       placeholder="Select a City"
       aria-labelledby="dd4"
     >
       <ng-template pTemplate="selectedItem">
-        <div *ngIf="contactForm.value.cities?.name">
+        <div *ngIf="contactForm.value.selectedCity !== ''">
           <span class="pi pi-map-marker"></span>
-          <span>{{ contactForm.value.cities?.name }}</span>
+          <span>{{ contactForm.value.selectedCity }}</span>
         </div>
       </ng-template>
       <ng-template let-city pTemplate="item">
         <div>
-          <span [ngClass]="contactForm.value.cities?.name !== '' ? 'pi pi-map-marker' : ''"></span>
+          <span [ngClass]="contactForm.value.selectedCity !== '' ? 'pi pi-map-marker' : ''"></span>
           <span>{{ city.name }}</span>
         </div>
       </ng-template>
     </p-dropdown>
+  </div>
+
+   <div class="form-group">
+    <span id="dm1">Default MultiSelect</span>
+    <p-multiSelect
+      [options]="cities"
+      formControlName="selectedCities"
+      optionLabel="name"
+      name="city"
+      aria-labelledby="dm1"
+    />
+  </div>
+
+  <div class="form-group">
+    <span id="dd2">MultiSelect Grouping</span>
+    <p-multiSelect
+      [options]="groupedCities"
+      [group]="true"
+      formControlName="selectedCities"
+      name="cityWithGroup"
+      placeholder ="Select a City"
+      aria-labelledby="dd2"
+    >
+      <ng-template let-group pTemplate="group">
+        <div>
+          <span class="pi pi-map-marker"></span>
+          <span>{{ group.label }}</span>
+        </div>
+      </ng-template>
+    </p-multiSelect>
+  </div>
+
+  <div class="form-group">
+    <span id="dd3">MultiSelect Templating</span>
+    <p-multiSelect
+      [options]="cities"
+      formControlName="selectedCities"
+      placeholder="Select a Country"
+      name="cityWithTemplating"
+      optionLabel="name"
+      aria-labelledby="dd3"
+    >
+      <ng-template let-cities pTemplate="selectedItems">
+        <div *ngFor="let city of cities">
+          <span class="pi pi-map-marker"></span>
+          <span>{{ city.name }}</span>
+        </div>
+
+        <div *ngIf="cities?.length === 0">Select Cities</div>
+      </ng-template>
+      <ng-template let-city pTemplate="item">
+        <div>
+          <span class="pi pi-map-marker"></span>
+          <span>{{ city.name }}</span>
+        </div>
+      </ng-template>
+    </p-multiSelect>
   </div>
 
 

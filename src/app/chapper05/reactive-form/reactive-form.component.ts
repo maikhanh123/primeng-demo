@@ -1,17 +1,25 @@
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
+  FormArray,
 } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
 import { RadioButtonModule } from 'primeng/radiobutton';
-import { DropdownModule } from 'primeng/dropdown'
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { SelectItemGroup } from 'primeng/api';
+
+interface City {
+  name: string;
+  code: string;
+}
 
 @Component({
   selector: 'app-reactive-form',
@@ -25,7 +33,7 @@ import { DropdownModule } from 'primeng/dropdown'
     InputMaskModule,
     RadioButtonModule,
     DropdownModule,
-    NgIf
+    MultiSelectModule,
   ],
   templateUrl: './reactive-form.component.html',
   styleUrl: './reactive-form.component.scss',
@@ -42,8 +50,9 @@ export class ReactiveFormComponent {
     phone: [''],
     subscribe: [false],
     gender: [''],
-    cities: [{ name: '', code: '' }],
-    groupedCities: []
+    selectedCity: [''],
+    selectedCitygroup: [''],
+    selectedCities:['']
   });
 
   genders: { name: string; value: string }[] = [
@@ -52,7 +61,7 @@ export class ReactiveFormComponent {
     { name: 'Other', value: 'O' },
   ];
 
-  cities = [
+  cities : City[] = [
     { name: 'Toronto', code: 'TOR' },
     { name: 'Montreal', code: 'MTL' },
     { name: 'Vancouver', code: 'VAN' },
@@ -63,33 +72,33 @@ export class ReactiveFormComponent {
     { name: 'Winnipeg', code: 'WIN' },
     { name: 'Hamilton', code: 'HAM' },
     { name: 'Kitchener', code: 'KIT' },
-  ]
+  ];
 
-  groupedCities = [
+  groupedCities: SelectItemGroup[] = [
     {
       label: 'Canada',
       value: 'ca',
       items: [
-        { label: 'Vancouver', value: 'Vancouver' },
-        { label: 'Toronto', value: 'Toronto' },
-        { label: 'Montreal', value: 'Montreal' },
-        { label: 'Ottawa', value: 'Ottawa' },
+        { label: 'Vancouver', value: 'Vancouver value' },
+        { label: 'Toronto', value: 'Toronto value' },
+        { label: 'Montreal', value: 'Montreal value' },
+        { label: 'Ottawa', value: 'Ottawa value' },
       ],
     },
     {
       label: 'Vietnam',
       value: 'vn',
       items: [
-        { label: 'Ho Chi Minh City', value: 'Ho Chi Minh City' },
-        { label: 'Hanoi', value: 'Hanoi' },
-        { label: 'Da Nang', value: 'Da Nang' },
-        { label: 'Nha Trang', value: 'Nha Trang' },
+        { label: 'Ho Chi Minh City', value: 'Ho Chi Minh City value' },
+        { label: 'Hanoi', value: 'Hanoi value' },
+        { label: 'Da Nang', value: 'Da Nang value' },
+        { label: 'Nha Trang', value: 'Nha Trang value' },
       ],
     },
-  ]
+  ];
 
   onCityChange(value: { name: string; code: string }) {
-    alert(`You have selected: ${value.name}`)
+    alert(`You have selected: ${value.name}`);
   }
 
   onSubmit = () => {
