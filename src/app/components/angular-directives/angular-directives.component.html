@@ -1,7 +1,9 @@
 <h2>Angular Directives</h2>
-    <div *ngIf="showMessage">
+    <div *ngIf="showMessage; else notShowMessage">
       <p>This message is shown conditionally.</p>
     </div>
+
+    <ng-template #notShowMessage> this is not show message from ng-template</ng-template>
 
     <p>This image below is from fallback directive.</p>
     <img src="assets/angular-test.png" fallbackImage="assets/angular.png" />

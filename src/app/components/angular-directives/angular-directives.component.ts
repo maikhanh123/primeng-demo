@@ -12,5 +12,5 @@ import { FallbackImageDirective } from 'src/app/shared/directives/fallback-image
   styleUrl: './angular-directives.component.scss',
 })
 export class AngularDirectivesComponent {
-  showMessage = true
+  showMessage = false
  }

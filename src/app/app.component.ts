@@ -9,6 +9,7 @@ import { DataBindingComponent } from './components/data-binding/data-binding.com
 import { NgIf } from '@angular/common';
 import { ButtonConfigurationComponent } from "./chapter04/button-configuration/button-configuration.component";
 import { TemplateDrivenFormComponent } from "./chapper05/template-driven-form/template-driven-form.component";
+import { ReactiveFormComponent } from "./chapper05/reactive-form/reactive-form.component";
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ import { TemplateDrivenFormComponent } from "./chapper05/template-driven-form/te
     DataBindingComponent,
     NgIf,
     ButtonConfigurationComponent,
-    TemplateDrivenFormComponent
+    TemplateDrivenFormComponent,
+    ReactiveFormComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

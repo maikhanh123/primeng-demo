@@ -1,0 +1,122 @@
+<div>
+  <h2>Reactive Forms</h2>
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <input type="text" pInputText formControlName="first" />
+    <button pButton type="submit">Submit</button>
+  </form>
+
+  <p>Demo Value: {{ profileForm.value | json }}</p>
+</div>
+<h2>Contact Form</h2>
+
+<form [formGroup]="contactForm" (ngSubmit)="onSubmitContact()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input pInputText id="name" type="text" formControlName="name" />
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <p-inputMask inputId="phone" mask="(999)-999-9999" formControlName="phone" placeholder="(999)-999-9999" />
+  </div>
+
+  <div class="form-group">
+    <p-checkbox formControlName="subscribe" [binary]="true" label="Subscribe to newsletter" />
+  </div>
+
+  <div class="form-group">
+    <label>Gender</label>
+    <p-radioButton *ngFor="let gender of genders" name="gender" value="{{ gender.value }}" label="{{ gender.name }}"
+      formControlName="gender" />
+  </div>
+
+  <div class="form-group">
+    <span id="dd1">Default Dropdown</span>
+    <p-dropdown
+      [options]="cities"
+      formControlName="cities"
+      [showClear]="contactForm.value.cities?.name !== ''"
+      optionLabel="name"
+      name="city"
+      aria-labelledby="dd1"
+    />
+  </div>
+
+  <div class="form-group">
+    <span id="dd2">Dropdown With Filter</span>
+    <p-dropdown
+      [options]="cities"
+      formControlName="cities"
+      optionLabel="name"
+      name="cityWithFilter"
+      [filter]="true"
+      aria-labelledby="dd2"
+    />
+  </div>
+
+  <div class="form-group">
+    <span id="dd3">Grouping</span>
+
+    <p-dropdown
+      [options]="groupedCities"
+      formControlName="groupedCities"
+      name="cityWithGroup"
+      placeholder="Select a City"
+      aria-labelledby="dd3"
+      [group]="true"
+    >
+      <ng-template let-group pTemplate="group">
+        <div>
+          <span class="pi pi-map-marker"></span>
+          <span>{{ group.label }}</span>
+        </div>
+      </ng-template>
+    </p-dropdown>
+  </div>
+
+  <div class="form-group">
+    <span id="dd5">Events</span>
+
+    <p-dropdown
+      [options]="cities"
+      formControlName="cities"
+      optionLabel="name"
+      (onChange)="onCityChange($event.value)"
+      name="cityWithEvents"
+      aria-labelledby="dd5"
+    />
+  </div>
+
+  <div class="form-group">
+    <span id="dd4">Templating</span>
+
+    <p-dropdown
+      [options]="cities"
+      formControlName="cities"
+      optionLabel="name"
+      name="cityWithTemplate"
+      [showClear]="contactForm.value.cities?.name !== ''"
+      placeholder="Select a City"
+      aria-labelledby="dd4"
+    >
+      <ng-template pTemplate="selectedItem">
+        <div *ngIf="contactForm.value.cities?.name">
+          <span class="pi pi-map-marker"></span>
+          <span>{{ contactForm.value.cities?.name }}</span>
+        </div>
+      </ng-template>
+      <ng-template let-city pTemplate="item">
+        <div>
+          <span [ngClass]="contactForm.value.cities?.name !== '' ? 'pi pi-map-marker' : ''"></span>
+          <span>{{ city.name }}</span>
+        </div>
+      </ng-template>
+    </p-dropdown>
+  </div>
+
+
+  <button pButton type="submit">Submit</button>
+</form>
+
+<p>ContactForm Value: {{ contactForm.value | json }}</p>

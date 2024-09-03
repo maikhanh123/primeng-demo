@@ -1,8 +1,98 @@
 <h2>Template Driven Form</h2>
 
-<form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
-  <input name="first" ngModel required />
-  <button>Submit</button>
+<form #form1="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+  <input pInputText name="first" ngModel required />
+  <button pButton>Submit</button>
 </form>
+
+<h2>Dropdown</h2>
+
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+      <div class="form-group">
+        <span id="dd1">Default Dropdown</span>
+        <p-dropdown
+          [options]="cities"
+          ngModel
+          optionLabel="name"
+          name="city"
+          aria-labelledby="dd1"
+        />
+      </div>
+
+      <div class="form-group">
+        <span id="dd2">Dropdown With Filter</span>
+
+        <p-dropdown
+          [options]="cities"
+          ngModel
+          optionLabel="name"
+          name="cityWithFilter"
+          [filter]="true"
+          aria-labelledby="dd2"
+        />
+      </div>
+
+      <div class="form-group">
+        <span id="dd3">Grouping</span>
+
+        <p-dropdown
+          [options]="groupedCities"
+          ngModel
+          name="cityWithGroup"
+          placeholder="Select a City"
+          aria-labelledby="dd3"
+          [group]="true"
+        >
+          <ng-template let-group pTemplate="group">
+            <div>
+              <span class="pi pi-map-marker"></span>
+              <span>{{ group.label }}</span>
+            </div>
+          </ng-template>
+        </p-dropdown>
+      </div>
+
+      <div class="form-group">
+        <span id="dd4">Templating</span>
+
+        <p-dropdown
+          [options]="cities"
+          ngModel
+          optionLabel="name"
+          name="cityWithTemplate"
+          [showClear]="true"
+          placeholder="Select a City"
+          aria-labelledby="dd4"
+        >
+          <ng-template pTemplate="selectedItem">
+            <div *ngIf="form.value.cityWithTemplate">
+              <span class="pi pi-map-marker"></span>
+              <span>{{ form.value.cityWithTemplate.name }}</span>
+            </div>
+          </ng-template>
+          <ng-template let-city pTemplate="item">
+            <div>
+              <span class="pi pi-map-marker"></span>
+              <span>{{ city.name }}</span>
+            </div>
+          </ng-template>
+        </p-dropdown>
+      </div>
+
+      <div class="form-group">
+        <span id="dd5">Events</span>
+
+        <p-dropdown
+          [options]="cities"
+          ngModel
+          optionLabel="name"
+          (onChange)="onCityChange($event.value)"
+          name="cityWithEvents"
+          aria-labelledby="dd5"
+        />
+      </div>
+
+      <button pButton type="submit">Submit</button>
+    </form>
 
 <p>Value: {{ form.value | json }}</p>
