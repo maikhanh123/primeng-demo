@@ -7,7 +7,7 @@ import { AngularServicesComponent } from './components/angular-services/angular-
 import { AngularControlFlowComponent } from './components/angular-control-flow/angular-control-flow.component';
 import { DataBindingComponent } from './components/data-binding/data-binding.component';
 import { NgIf } from '@angular/common';
-import { ButtonConfigurationComponent } from "./chapter04/components/button-configuration/button-configuration.component";
+import { ButtonConfigurationComponent } from "./chapter04/button-configuration/button-configuration.component";
 
 @Component({
   selector: 'app-root',
