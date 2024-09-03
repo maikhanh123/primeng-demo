@@ -1,0 +1,8 @@
+<h2>Template Driven Form</h2>
+
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+  <input name="first" ngModel required />
+  <button>Submit</button>
+</form>
+
+<p>Value: {{ form.value | json }}</p>

@@ -205,6 +205,9 @@
       </svg>
       <h1>Hello, {{ title }}</h1>
       <p>Congratulations! Your app is running. 🎉</p>
+      <div  *ngIf="chapter05">
+        <app-template-driven-form />
+      </div>
       <div *ngIf="chapter04">
         <app-button-configuration />
       </div>

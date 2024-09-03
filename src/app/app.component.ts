@@ -8,6 +8,7 @@ import { AngularControlFlowComponent } from './components/angular-control-flow/a
 import { DataBindingComponent } from './components/data-binding/data-binding.component';
 import { NgIf } from '@angular/common';
 import { ButtonConfigurationComponent } from "./chapter04/button-configuration/button-configuration.component";
+import { TemplateDrivenFormComponent } from "./chapper05/template-driven-form/template-driven-form.component";
 
 @Component({
   selector: 'app-root',
@@ -21,13 +22,15 @@ import { ButtonConfigurationComponent } from "./chapter04/button-configuration/b
     AngularControlFlowComponent,
     DataBindingComponent,
     NgIf,
-    ButtonConfigurationComponent
+    ButtonConfigurationComponent,
+    TemplateDrivenFormComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'primeng-demo';
-  chapter04 = true;
+  chapter05 = true;
+  chapter04 = false;
   chapter03 = false;
 }
