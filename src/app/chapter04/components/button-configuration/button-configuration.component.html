@@ -1,0 +1,19 @@
+<h2>Button Configuration</h2>
+
+<p-button label="Click me!" icon="pi pi-check" iconPos="right" [disabled]="isDisabled" />
+
+<br /><br />
+
+<button pButton label="Loading!" [loading]="loading" (click)="onClickEvent()"></button>
+
+<br /><br />
+
+<input type="button" pButton [raised]="true" [rounded]="true" value="Input Button" (click)="onClickEvent()" />
+
+<br /><br />
+
+<a href="" pButton (click)="onClickEvent()">Link Button</a>
+
+<h2>Button Override Styles</h2>
+
+<button id="overrideButton" pButton type="button" label="Custom styles"></button>
